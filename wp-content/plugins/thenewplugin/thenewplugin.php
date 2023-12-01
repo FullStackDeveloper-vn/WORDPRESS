@@ -63,7 +63,20 @@ function thenewplugin_custom_post_type() {
 			'public'      => true,
 			'has_archive' => true,
 			'rewrite'     => array( 'slug' => 'thenewplugin' ), // my custom slug
+			'show_in_rest'       => true,
+			'rest_base'          => 'thenewplugin',
+			'rest_controller_class' => 'WP_REST_Posts_Controller',
 		)
 	);
 }
 add_action('init', 'thenewplugin_custom_post_type');
+
+
+// function my_plugin_rest_route_for_post( $route, $post ) {
+//     if ( $post->post_type === 'thenewplugin' ) {
+//         $route = '/wp/v2/thenewplugin/' . $post->ID;
+//     }
+
+//     return $route;
+// }
+// add_filter( 'rest_route_for_post', 'my_plugin_rest_route_for_post', 10, 2 );
